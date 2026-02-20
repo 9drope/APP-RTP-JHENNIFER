@@ -20,7 +20,15 @@ const Header: React.FC<HeaderProps> = ({ activeTab }) => {
         <div className="relative w-full rounded-2xl overflow-hidden border border-white/5 animate-in fade-in duration-500">
           <picture>
             <source media="(min-width: 768px)" srcSet={CONFIG.banners.desktop} />
-            <img src={CONFIG.banners.mobile} alt="Banner RTP" className="w-full h-auto object-cover" />
+            {/* OTIMIZAÇÃO APLICADA AQUI: fetchPriority="high" e loading="eager" */}
+            <img 
+              src={CONFIG.banners.mobile} 
+              alt="Banner RTP" 
+              fetchPriority="high"
+              loading="eager"
+              decoding="sync"
+              className="w-full h-auto object-cover" 
+            />
           </picture>
         </div>
       )}

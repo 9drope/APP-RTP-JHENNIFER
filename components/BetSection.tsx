@@ -6,12 +6,12 @@ import BetModal from './BetModal';
 const BetSection: React.FC = () => {
   const [selectedHouse, setSelectedHouse] = useState<BetHouse | null>(null);
 
-  // Lista de benefícios com Ícones SVG (Substituindo os Emojis)
+  // Lista de benefícios com Ícones SVG
   const betBenefits = [
     { 
       title: 'REGULAMENTADAS',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 md:w-6 md:h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       )
@@ -19,7 +19,7 @@ const BetSection: React.FC = () => {
     { 
       title: 'GIROS GRÁTIS',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 md:w-6 md:h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="20 12 20 22 4 22 4 12"></polyline>
           <rect x="2" y="7" width="20" height="5"></rect>
           <line x1="12" y1="22" x2="12" y2="7"></line>
@@ -31,7 +31,7 @@ const BetSection: React.FC = () => {
     { 
       title: 'BÔNUS E SALDO',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 md:w-6 md:h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
           <line x1="12" y1="18" x2="12" y2="18.01"></line>
@@ -42,7 +42,7 @@ const BetSection: React.FC = () => {
     { 
       title: 'MISSÕES E TORNEIOS',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 md:w-6 md:h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <circle cx="12" cy="12" r="6"></circle>
           <circle cx="12" cy="12" r="2"></circle>
@@ -75,24 +75,30 @@ const BetSection: React.FC = () => {
            </div>
         </div>
         
-        {/* Bloco de Benefícios Otimizado e Compacto */}
-        <div className="bg-white/[0.08] border border-white/10 rounded-[2rem] p-4 md:p-8 shadow-[0_0_40px_rgba(255,0,0,0.05)] backdrop-blur-md mt-6">
-          {/* Forçando 2 colunas no Mobile (grid-cols-2) */}
-          <div className="grid grid-cols-2 gap-3 md:gap-5">
+        {/* Bloco de Benefícios Centralizado e Otimizado */}
+        <div className="bg-white/[0.08] border border-white/10 rounded-[2rem] p-6 md:p-8 shadow-[0_0_40px_rgba(255,0,0,0.05)] backdrop-blur-md mt-6 w-full max-w-3xl mx-auto flex justify-center">
+          
+          {/* Container interno com w-fit para centralizar o bloco de forma absoluta */}
+          <div className="flex flex-col gap-5 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-6 w-fit">
+            
             {betBenefits.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2 md:gap-4 group">
-                {/* Ícone menor no mobile (w-7 h-7) e maior no desktop */}
-                <div className="w-7 h-7 md:w-10 md:h-10 shrink-0 bg-red-600/20 border border-red-600/30 rounded-lg md:rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+              <div key={idx} className="flex items-center gap-4 group">
+                
+                {/* Ícone */}
+                <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 bg-red-600/20 border border-red-600/30 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
                 </div>
-                <div className="pt-[2px] md:pt-1 overflow-hidden">
-                  {/* Fonte reduzida para caber no mobile */}
-                  <p className="font-black text-white/90 uppercase text-[8px] md:text-[11px] tracking-wider leading-tight truncate">
+                
+                {/* Texto alinhado ao lado do ícone */}
+                <div className="pt-1 text-left">
+                  <p className="font-black text-white/90 uppercase text-[11px] md:text-[12px] tracking-widest leading-tight">
                     {item.title}
                   </p>
                 </div>
+
               </div>
             ))}
+            
           </div>
         </div>
       </div>

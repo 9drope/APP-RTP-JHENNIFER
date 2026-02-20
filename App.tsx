@@ -83,13 +83,15 @@ const App: React.FC = () => {
 
             {processedGames.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                {processedGames.map(game => (
+                {/* AQUI ESTÁ A OTIMIZAÇÃO: Recebendo o index e passando o isPriority para os 4 primeiros */}
+                {processedGames.map((game, index) => (
                   <GameCard 
                     key={game.id} 
                     game={game} 
                     metrics={gameMetrics[game.id]}
                     highlight={topIds.has(game.id)}
                     onInfo={setSelectedGameInfo}
+                    isPriority={index < 4}
                   />
                 ))}
               </div>

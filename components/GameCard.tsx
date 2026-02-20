@@ -7,9 +7,11 @@ interface GameCardProps {
   metrics: Metrics;
   highlight: boolean;
   onInfo: (game: Game) => void;
+  // Propriedade de otimização adicionada
+  isPriority?: boolean; 
 }
 
-const GameCard: React.FC<GameCardProps> = ({ game, metrics, highlight, onInfo }) => {
+const GameCard: React.FC<GameCardProps> = ({ game, metrics, highlight, onInfo, isPriority }) => {
   const getStatusColorClass = (val: number) => {
     if (val < 40) return "status-red";
     if (val < 70) return "status-orange";
@@ -43,9 +45,13 @@ const GameCard: React.FC<GameCardProps> = ({ game, metrics, highlight, onInfo })
 
       {/* Image Area */}
       <div className="poster-aspect bg-zinc-900 overflow-hidden relative mx-2 mb-2 rounded-xl">
+        {/* OTIMIZAÇÃO APLICADA AQUI NA IMAGEM */}
         <img 
           src={game.image} 
           alt={game.name}
+          loading={isPriority ? "eager" : "lazy"}
+          fetchPriority={isPriority ? "high" : "low"}
+          decoding="async"
           className="w-full h-full object-cover grayscale-[0.2] transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -64,7 +70,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, metrics, highlight, onInfo })
             className="pointer-events-auto w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all active:scale-90"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 16h-1v-4h-1m1-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </button>
         </div>
@@ -98,6 +104,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, metrics, highlight, onInfo })
         <a 
           href={mainBetUrl} 
           target="_blank" 
+          rel="noopener noreferrer"
           className="block w-full py-2.5 bg-[#8b0000] text-white/90 text-center text-xs font-black uppercase tracking-widest rounded-xl hover:bg-red-800 transition-all"
         >
           JOGAR
