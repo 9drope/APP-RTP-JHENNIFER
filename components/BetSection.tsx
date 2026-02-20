@@ -6,13 +6,57 @@ import BetModal from './BetModal';
 const BetSection: React.FC = () => {
   const [selectedHouse, setSelectedHouse] = useState<BetHouse | null>(null);
 
+  // Lista de benefícios com Ícones SVG (Substituindo os Emojis)
+  const betBenefits = [
+    { 
+      title: 'REGULAMENTADAS',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      )
+    },
+    { 
+      title: 'GIROS GRÁTIS',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="20 12 20 22 4 22 4 12"></polyline>
+          <rect x="2" y="7" width="20" height="5"></rect>
+          <line x1="12" y1="22" x2="12" y2="7"></line>
+          <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+          <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+        </svg>
+      )
+    },
+    { 
+      title: 'BÔNUS E SALDO',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+          <line x1="12" y1="18" x2="12" y2="18.01"></line>
+          <line x1="12" y1="5" x2="12" y2="5.01"></line>
+        </svg>
+      )
+    },
+    { 
+      title: 'MISSÕES E TORNEIOS',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="6"></circle>
+          <circle cx="12" cy="12" r="2"></circle>
+        </svg>
+      )
+    }
+  ];
+
   return (
-    // Removido o z-index restritivo para permitir que o modal use seu z-1000 globalmente
     <div className="space-y-10 max-w-2xl mx-auto pb-10 px-2 animate-in fade-in duration-500 relative">
       {/* Title & Slogan Section */}
       <div className="text-center space-y-4">
         <div className="flex flex-col items-center gap-4">
-           {/* Ícone Temático 777 - Ajustado conforme pedido */}
+           {/* Ícone Temático 777 */}
            <div className="text-white flex items-center justify-center p-0">
              <svg viewBox="0 0 24 24" fill="none" className="w-16 h-16" stroke="currentColor" strokeWidth="1.0" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="7" width="20" height="10" rx="2" />
@@ -31,28 +75,24 @@ const BetSection: React.FC = () => {
            </div>
         </div>
         
-        {/* Quadrante de Benefícios - Destaque Reforçado */}
-        <div className="flex flex-col items-center gap-3 bg-white/[0.15] p-6 rounded-[2.5rem] border border-white/20 shadow-[0_0_40px_rgba(255,0,0,0.15)] backdrop-blur-md">
-          <div className="grid grid-cols-2 gap-x-6 gap-y-5 md:flex md:flex-wrap md:items-center md:justify-center md:gap-x-10">
-            <div className="flex items-center gap-2 group">
-              <span className="text-xl drop-shadow-lg">✅</span>
-              <span className="text-[9px] font-black text-white uppercase tracking-widest whitespace-nowrap">REGULAMENTADAS</span>
-            </div>
-            
-            <div className="flex items-center gap-2 group">
-              <span className="text-xl drop-shadow-lg">🎁</span>
-              <span className="text-[9px] font-black text-white uppercase tracking-widest whitespace-nowrap">GIROS GRÁTIS</span>
-            </div>
-            
-            <div className="flex items-center gap-2 group">
-              <span className="text-xl drop-shadow-lg">💰</span>
-              <span className="text-[9px] font-black text-white uppercase tracking-widest whitespace-nowrap">BÔNUS E SALDO REAL</span>
-            </div>
-
-            <div className="flex items-center gap-2 group">
-              <span className="text-xl drop-shadow-lg">🎯</span>
-              <span className="text-[9px] font-black text-white uppercase tracking-widest whitespace-nowrap">MISSÕES E TORNEIOS</span>
-            </div>
+        {/* Bloco de Benefícios Otimizado e Compacto */}
+        <div className="bg-white/[0.08] border border-white/10 rounded-[2rem] p-4 md:p-8 shadow-[0_0_40px_rgba(255,0,0,0.05)] backdrop-blur-md mt-6">
+          {/* Forçando 2 colunas no Mobile (grid-cols-2) */}
+          <div className="grid grid-cols-2 gap-3 md:gap-5">
+            {betBenefits.map((item, idx) => (
+              <div key={idx} className="flex items-center gap-2 md:gap-4 group">
+                {/* Ícone menor no mobile (w-7 h-7) e maior no desktop */}
+                <div className="w-7 h-7 md:w-10 md:h-10 shrink-0 bg-red-600/20 border border-red-600/30 rounded-lg md:rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                  {item.icon}
+                </div>
+                <div className="pt-[2px] md:pt-1 overflow-hidden">
+                  {/* Fonte reduzida para caber no mobile */}
+                  <p className="font-black text-white/90 uppercase text-[8px] md:text-[11px] tracking-wider leading-tight truncate">
+                    {item.title}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -65,15 +105,17 @@ const BetSection: React.FC = () => {
             onClick={() => setSelectedHouse(house)}
             className="flex flex-col items-center gap-2 group animate-in zoom-in-95 duration-300"
           >
-            {/* Outer Box - Removido padding interno para preencher totalmente */}
+            {/* Outer Box */}
             <div className="relative w-full aspect-square bg-zinc-900 rounded-xl md:rounded-2xl shadow-2xl transition-all duration-300 group-hover:scale-105 active:scale-95 border border-white/10 flex items-center justify-center overflow-hidden">
               {/* Glossy Overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10 pointer-events-none z-20"></div>
               
-              {/* Logo preenchendo totalmente o espaço com object-cover */}
+              {/* Otimização lazy loading extrema */}
               <img 
                 src={house.logo} 
                 alt={house.name} 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform group-hover:scale-110 z-10" 
               />
 
@@ -91,11 +133,11 @@ const BetSection: React.FC = () => {
 
       {/* Legal Disclaimer */}
       <div className="pt-12 flex items-center justify-center gap-4 border-t border-white/5">
-        <div className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center">
+        <div className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center shrink-0">
           <span className="text-[10px] font-black text-white/60">18+</span>
         </div>
         <div className="w-px h-6 bg-white/10"></div>
-        <p className="text-[10px] font-[900] text-white/50 uppercase tracking-[0.2em]">JOGUE COM RESPONSABILIDADE</p>
+        <p className="text-[9px] md:text-[10px] font-[900] text-white/50 uppercase tracking-[0.2em] leading-tight">JOGUE COM RESPONSABILIDADE</p>
       </div>
 
       {/* Popup Detail */}
