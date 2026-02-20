@@ -6,12 +6,12 @@ import BetModal from './BetModal';
 const BetSection: React.FC = () => {
   const [selectedHouse, setSelectedHouse] = useState<BetHouse | null>(null);
 
-  // Lista de benefícios com Ícones SVG
+  // Lista de benefícios com Ícones SVG exatos (Fundo redondo vinho)
   const betBenefits = [
     { 
       title: 'REGULAMENTADAS',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 md:w-6 md:h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       )
@@ -19,7 +19,7 @@ const BetSection: React.FC = () => {
     { 
       title: 'GIROS GRÁTIS',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 md:w-6 md:h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="20 12 20 22 4 22 4 12"></polyline>
           <rect x="2" y="7" width="20" height="5"></rect>
           <line x1="12" y1="22" x2="12" y2="7"></line>
@@ -31,7 +31,7 @@ const BetSection: React.FC = () => {
     { 
       title: 'BÔNUS E SALDO',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 md:w-6 md:h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
           <line x1="12" y1="18" x2="12" y2="18.01"></line>
@@ -42,7 +42,7 @@ const BetSection: React.FC = () => {
     { 
       title: 'MISSÕES E TORNEIOS',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 md:w-6 md:h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 md:w-5 md:h-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <circle cx="12" cy="12" r="6"></circle>
           <circle cx="12" cy="12" r="2"></circle>
@@ -75,23 +75,23 @@ const BetSection: React.FC = () => {
            </div>
         </div>
         
-        {/* Bloco de Benefícios Centralizado e Otimizado */}
-        <div className="bg-white/[0.08] border border-white/10 rounded-[2rem] p-6 md:p-8 shadow-[0_0_40px_rgba(255,0,0,0.05)] backdrop-blur-md mt-6 w-full max-w-3xl mx-auto flex justify-center">
+        {/* Bloco de Benefícios - Igual ao Print (2 por linha mobile, Ícones Redondos) */}
+        <div className="bg-[#121212]/80 border border-white/5 rounded-[2rem] p-5 md:p-8 shadow-[0_0_40px_rgba(255,0,0,0.05)] backdrop-blur-md mt-6 w-full max-w-3xl mx-auto flex justify-center">
           
-          {/* Container interno com w-fit para centralizar o bloco de forma absoluta */}
-          <div className="flex flex-col gap-5 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-6 w-fit">
+          {/* AQUI ESTÁ A REGRA: grid-cols-2 força 2 colunas até no celular */}
+          <div className="grid grid-cols-2 gap-x-2 gap-y-5 md:gap-x-12 md:gap-y-8 w-full md:w-fit">
             
             {betBenefits.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-4 group">
+              <div key={idx} className="flex items-center gap-2.5 md:gap-4 group">
                 
-                {/* Ícone */}
-                <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 bg-red-600/20 border border-red-600/30 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                {/* Ícone: Fundo vinho escuro (#3a0d0d) e totalmente redondo (rounded-full) */}
+                <div className="w-8 h-8 md:w-11 md:h-11 shrink-0 bg-[#3a0d0d] border border-red-500/30 rounded-full flex items-center justify-center text-white/90 group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
                 </div>
                 
-                {/* Texto alinhado ao lado do ícone */}
-                <div className="pt-1 text-left">
-                  <p className="font-black text-white/90 uppercase text-[11px] md:text-[12px] tracking-widest leading-tight">
+                {/* Texto ajustado para não quebrar no mobile */}
+                <div className="pt-[2px] text-left flex-1 overflow-hidden">
+                  <p className="font-black text-white/90 uppercase text-[8.5px] md:text-[12px] tracking-wider md:tracking-widest leading-tight truncate md:whitespace-normal">
                     {item.title}
                   </p>
                 </div>
@@ -103,7 +103,7 @@ const BetSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Grid Layout - Logos preenchendo totalmente o quadrante */}
+      {/* Grid Layout - 3 colunas de casas */}
       <div className="grid grid-cols-3 gap-2 md:gap-4">
         {BET_HOUSES.map((house) => (
           <button
@@ -113,10 +113,8 @@ const BetSection: React.FC = () => {
           >
             {/* Outer Box */}
             <div className="relative w-full aspect-square bg-zinc-900 rounded-xl md:rounded-2xl shadow-2xl transition-all duration-300 group-hover:scale-105 active:scale-95 border border-white/10 flex items-center justify-center overflow-hidden">
-              {/* Glossy Overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/10 pointer-events-none z-20"></div>
               
-              {/* Otimização lazy loading extrema */}
               <img 
                 src={house.logo} 
                 alt={house.name} 
@@ -125,11 +123,9 @@ const BetSection: React.FC = () => {
                 className="w-full h-full object-cover transition-transform group-hover:scale-110 z-10" 
               />
 
-              {/* Shine highlight */}
               <div className="absolute -top-[50%] -left-[50%] w-[150%] h-[150%] bg-gradient-to-br from-white/5 to-transparent rotate-45 pointer-events-none z-30"></div>
             </div>
 
-            {/* Label below the box */}
             <span className="text-[8px] md:text-[10px] font-black text-white uppercase tracking-tight transition-colors group-hover:text-red-500 text-center truncate w-full px-1">
               {house.name}
             </span>
