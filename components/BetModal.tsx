@@ -25,13 +25,14 @@ const BetModal: React.FC<BetModalProps> = ({ house, onClose, games }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/95 backdrop-blur-md animate-in fade-in duration-300" onClick={onClose}>
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-0 md:p-4 bg-black/95 backdrop-blur-md animate-in fade-in duration-300" onClick={onClose}>
       <div 
-        className="w-full h-full md:h-auto md:max-w-md bg-[#0a0a0a] md:rounded-[3rem] overflow-hidden flex flex-col relative border-0 md:border-2 md:border-white/5 shadow-2xl" 
+        // OTIMIZAÇÃO APLICADA AQUI: md:max-h-[90vh]
+        className="w-full h-full md:h-auto md:max-h-[90vh] md:max-w-md bg-[#0a0a0a] md:rounded-[3rem] overflow-hidden flex flex-col relative border-0 md:border-2 md:border-white/5 shadow-2xl" 
         onClick={e => e.stopPropagation()}
       >
         {/* Header Section */}
-        <div className="p-6 flex items-center justify-between border-b border-white/5 bg-zinc-900/50 pr-16">
+        <div className="p-6 flex items-center justify-between border-b border-white/5 bg-zinc-900/50 pr-16 shrink-0">
           <div className="flex flex-col">
             <h3 className="font-black text-lg text-white uppercase tracking-tighter">{house.name}</h3>
             <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">{house.license}</span>
@@ -42,9 +43,9 @@ const BetModal: React.FC<BetModalProps> = ({ house, onClose, games }) => {
         </div>
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto no-scrollbar pb-24">
+        <div className="flex-1 overflow-y-auto no-scrollbar pb-24 relative">
           {/* Main Banner */}
-          <div className="w-full aspect-[16/9] bg-zinc-900 overflow-hidden relative shadow-lg">
+          <div className="w-full aspect-[16/9] bg-zinc-900 overflow-hidden relative shadow-lg shrink-0">
             <img src={house.banner} alt="Banner" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </div>
@@ -74,21 +75,21 @@ const BetModal: React.FC<BetModalProps> = ({ house, onClose, games }) => {
         </div>
 
         {/* Action Button Footer */}
-        <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/95 to-transparent">
+        <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/95 to-transparent shrink-0">
           <a 
             href={house.url}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full h-16 bg-green-600 text-white font-[1000] text-xs md:text-sm rounded-[2rem] flex items-center justify-center gap-2 shadow-2xl shadow-green-900/40 uppercase tracking-widest animate-pulse-action transition-all active:scale-95 border-0 relative overflow-hidden"
           >
-            CADASTRAR + RESGATAR PREMIOS
+            CADASTRAR E RESGATAR
             <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
         </div>
 
-        {/* Fixed Close Button - Top Right with better contrast and padding awareness */}
+        {/* Fixed Close Button */}
         <button 
           onClick={onClose}
           className="absolute top-4 right-4 z-[1100] w-11 h-11 bg-black/60 backdrop-blur-xl rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all shadow-2xl active:scale-90"
