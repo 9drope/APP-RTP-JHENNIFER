@@ -15,7 +15,7 @@ export const BET_HOUSES: BetHouse[] = [
     logo: "https://i.ibb.co/b5mQNxdS/14.webp",
     banner: "https://i.ibb.co/Fk1YPKpF/1.webp",
     license: "SPA/MF n°2.090",
-    url: "https://afiliados.superbetbr.com.br/",
+    url: "https://superbet.bet.br/",
     rewards: [
       "SUPERSPIN: Roleta diária com prêmios como aposta grátis, giros grátis e bônus de até R$10.000.",
       "CASHBACK DE ATÉ 20% EM SLOTS: Ative em promoções, válido para alguns jogos.",
@@ -28,7 +28,7 @@ export const BET_HOUSES: BetHouse[] = [
     logo: "https://i.ibb.co/XQHPyKs/15.webp",
     banner: "https://i.ibb.co/23yvXXHk/2.webp",
     license: "SIGAP 099/2024",
-    url: "https://01.bet/",
+    url: "https://zeroum.bet/",
     rewards: [
       "ROLETA DO MILHÃO: Roleta diária com giros grátis, iPhone e até R$1.000.000.",
       "ÁREA DE MISSÕES: Conclua missões e troque pontos por giros grátis.",
@@ -41,7 +41,7 @@ export const BET_HOUSES: BetHouse[] = [
     logo: "https://i.ibb.co/tPTkWV6Q/16.webp",
     banner: "https://i.ibb.co/Lz2n2CS5/3.webp",
     license: "SPA/MF n°136/25",
-    url: "https://lottu.com/",
+    url: "https://www.lottu.bet.br/",
     rewards: [
       "ROLETA DO MILHÃO: Roleta diária com giros grátis, iPhone e até R$1.000.000.",
       "ÁREA DE MISSÕES: Conclua missões e troque pontos por giros grátis.",
@@ -54,7 +54,7 @@ export const BET_HOUSES: BetHouse[] = [
     logo: "https://i.ibb.co/0RQvQcp0/17.webp",
     banner: "https://i.ibb.co/79v8NZP/4.webp",
     license: "SPA/MF nº 247",
-    url: "https://br.sportingbet.com/",
+    url: "https://www.sportingbet.bet.br/",
     rewards: [
       "GIRÃO DO SHAQ: Aposte R$10 em Futebol e ganhe uma chance com prêmios de giros grátis, apostas grátis e até R$1000 em saldo.",
       "APOSTOU, GANHOU!: Aposte R$20 em slots e receba 20 giros grátis na Gates of Olympus Super Scatter por dia."
@@ -66,7 +66,7 @@ export const BET_HOUSES: BetHouse[] = [
     logo: "https://i.ibb.co/d0zmRj3n/18.webp",
     banner: "https://i.ibb.co/0VM0SwRD/5.webp",
     license: "N/A",
-    url: "https://spinbetter.com/",
+    url: "https://spinbetter.com/br",
     rewards: [
       "BÔNUS NOS 4 PRIMEIROS DEPÓSITOS: Mínimo de 65 BRL no 1º e 100 BRL nos demais.",
       "1º DEPÓSITO: 100% de bônus e 30 FS.",
@@ -167,7 +167,7 @@ export const SUPPORT: SupportLink[] = [
     id: "whatsapp",
     name: "GRUPO WHATSAPP",
     img: "https://i.postimg.cc/Vsn3cMK8/pngtree-whatsapp-icon-png-image-6315990.png",
-    url: "https://chat.whatsapp.com/",
+    url: "https://chat.whatsapp.com/Dx0gxm8s3wLCpzuv6ymBOb",
     btn: "ENTRAR NO GRUPO"
   },
   {
